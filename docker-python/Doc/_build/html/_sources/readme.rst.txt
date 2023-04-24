@@ -1,43 +1,37 @@
-Docker33
+Mock Docker 
 ==================
-
-This is a paragraph.  It's quite
-short.
-
-   This paragraph will result in an indented block of
-   text, typically used for quoting other text.
-
-This is another one.
 
 Resources
 ==================
 
--  [**Python**: _A workshop on Linux containers: Rebuild Docker from Scratch_](https://github.com/Fewbytes/rubber-docker)
-  
-- [**Python**: _A proof-of-concept imitation of Docker, written in 100% Python_](https://github.com/tonybaloney/mocker)
+-  `Python: A workshop on Linux containers: Rebuild Docker from Scratch <https://github.com/Fewbytes/rubber-docker>`_
 
+- `Python: A proof-of-concept imitation of Docker, written in 100% Python <https://github.com/tonybaloney/mocker>`_
 
-+------------------------------------+
-|           Docker Host              |
-|                                    |
-|  +----------------+ +----------+  |
-|  |  Networking    | |  Storage |  |
-|  |    (CNM)       | | (Graph)  |  |
-|  +----+------+----+ +-----+----+  |
-|       |      |            |        |
-|  +----v------+----+ +-----v----+   |
-|  |   libnetwork   | |  Storage |   |
-|  |                | |  Driver  |   |
-|  +----------------+ +----------+  |
-|                                    |
-|  +----------------------------+   |
-|  |         Container           |   |
-|  |                            |   |
-|  |  +--------+ +--------+     |   |
-|  |  | cgroup | | Namespes |     |   |
-|  |  +--------+ +--------+     |   |
-|  +----------------------------+   |
-+------------------------------------+
+.. code-block:: rst
+
+   +------------------------------------+
+   |           Docker Host              |
+   |                                    |
+   |  +----------------+ +----------+  |
+   |  |  Networking    | |  Storage |  |
+   |  |    (CNM)       | | (Graph)  |  |
+   |  +----+------+----+ +-----+----+  |
+   |       |      |            |        |
+   |  +----v------+----+ +-----v----+   |
+   |  |   libnetwork   | |  Storage |   |
+   |  |                | |  Driver  |   |
+   |  +----------------+ +----------+  |
+   |                                    |
+   |  +----------------------------+   |
+   |  |         Container           |   |
+   |  |                            |   |
+   |  |  +--------+ +--------+     |   |
+   |  |  | cgroup | | Namespes |     |   |
+   |  |  +--------+ +--------+     |   |
+   |  +----------------------------+   |
+   +------------------------------------+
+
 
 
 
@@ -70,3 +64,5 @@ chroot
 namespaces
 cgroups
 kernel
+
+
