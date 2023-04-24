@@ -69,3 +69,20 @@ After creating the child process, Docker uses the exec family of functions to re
 The combination of fork() and exec allows Docker to create isolated container processes, each running a specific command within the container's environment, while still managing and tracking the containers from the parent Docker engine process.
 
 
+Chroot
+==================
+`chroot` is a UNIX operation that changes the apparent root directory for the current running process and its children. The term `chroot` stands for "change root." It provides a way to create an isolated environment in which a process and its children can only access a specific part of the filesystem, limited by the new root directory.
+
+In the context of Linux and Docker, `chroot` is used to create a filesystem isolation for a container. When a container is created, the container's filesystem is based on an image, which contains all the files, directories, and dependencies required for the applications running inside the container. By using `chroot`, Docker can restrict the container process to only access its own filesystem, preventing it from accessing or modifying files outside the container.
+
+Here's how `chroot` is used in Docker:
+
+1. When a Docker container is started, the Docker engine sets up the container's filesystem by overlaying the container's image layers on top of each other and mounting the resulting filesystem at a specific location on the host system (e.g., `/var/lib/docker/overlay2/<container-id>/merged`).
+
+2. Docker then creates a new process (usually using the fork and exec model) that will run inside the container.
+
+3. Before executing the container's entrypoint command, Docker calls the `chroot()` system call to change the root directory of the container process to the container's mounted filesystem. This restricts the container process and its children to only access files and directories within the container's filesystem.
+
+4. The container process now runs in an isolated filesystem environment, separate from the host system and other containers.
+
+It's important to note that `chroot` only provides filesystem isolation, and it doesn't offer complete isolation for other system resources, such as process IDs, network interfaces, and IPC namespaces. Docker uses other Linux kernel features like namespaces and cgroups to provide a more comprehensive isolation for containers.
